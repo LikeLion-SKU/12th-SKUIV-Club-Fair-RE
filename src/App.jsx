@@ -1,45 +1,48 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from './styles/GlobalStyle';
+import { theme } from './common/theme';
 
-import About from './pages/About';
-import Booth from './pages/Booth';
-import HomePage from './pages/HomePage';
-import DongariIntro from './pages/schedule';
-import DongariDetail from './pages/DongariDetail';
-import DongariTotal from './pages/DongariTotal';
-import Schedule from './pages/schedule';
+import AboutPage from './pages/About/About';
+import BoothPage from './pages/Booth/Booth';
+import HomePage from './pages/Home/Home';
+import PerformancePage from './pages/Performance/Performance';
+import RootLayout from './components/RootLayout';
+
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '/intro',
-    element: <DongariIntro />,
-  },
-  {
-    path: '/intro/:dongari',
-    element: <DongariTotal />,
-  },
-  {
-    path: '/intro/:id',
-    element: <DongariDetail />,
-  },
-  {
-    path: '/booth',
-    element: <Booth />,
-  },
-  {
-    path: '/schedule',
-    element: <Schedule />,
-  },
-  {
-    path: '/about',
-    element: <About />,
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: 'booth',
+        element: <BoothPage />,
+      },
+      {
+        path: 'performence',
+        element: <PerformancePage />,
+      },
+      {
+        path: 'about',
+        element: <AboutPage />,
+      },
+    ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </>
+  );
 }
 
 export default App;
