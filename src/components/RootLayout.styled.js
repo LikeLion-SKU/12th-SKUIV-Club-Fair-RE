@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import background from '../../assets/images/HomePage/background.png';
+import styled from "styled-components";
+import background from "../assets/images/HomePage/background.png";
 
-export const HomePageLayout = styled.main`
+export const RootLayout = styled.main`
   @media ${({ theme }) => theme.device.pc} {
     width: 1300px;
     margin: auto;
@@ -13,8 +13,4 @@ export const HomePageLayout = styled.main`
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0px 32px;
-`;
-
-export const HomePageButtonSection = styled.section`
-  width: 100%;
 `;

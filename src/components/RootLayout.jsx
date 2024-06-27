@@ -1,20 +1,22 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import Header from './Header';
+import { Outlet, useLocation } from "react-router-dom";
+
+import Header from "./Header";
+import * as S from "./RootLayout.styled";
 
 export default function RootLayout() {
   const location = useLocation();
 
-  function headerHandler() {
-    if (location.pathname === '/') {
-      return;
-    } else {
-      return <Header />;
-    }
+  if (location.pathname === "/") {
+    return (
+      <S.RootLayout>
+        <Outlet />
+      </S.RootLayout>
+    );
   }
   return (
-    <>
-      {headerHandler()}
+    <S.RootLayout>
+      <Header />
       <Outlet />
-    </>
+    </S.RootLayout>
   );
 }
