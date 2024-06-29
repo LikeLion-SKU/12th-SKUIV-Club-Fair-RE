@@ -10,7 +10,7 @@ export const RootLayout = styled.main`
     padding: 0px 16px;
   }
   background-image: url(${background});
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
   padding: 0px 32px;
 `;

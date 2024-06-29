@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 
 /**
  * custom hook
@@ -8,7 +8,7 @@ function useComponentSize() {
   const [size, setSize] = useState({ width: 0, height: 0 });
   const componentRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       const { width, height } =
         componentRef.current?.getBoundingClientRect() ?? {
@@ -20,9 +20,9 @@ function useComponentSize() {
 
     handleResize();
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return [componentRef, size];
